@@ -21,6 +21,7 @@ export interface AxiosRequestConfig {
   data?: any // 请举起参数
   params?: any // url参数
   headers?: any // 请求头
+  timeout?:number,// 处理超时 ms
   responseType?: XMLHttpRequestResponseType // 它允许我们手动的设置返回数据的类型 ，所以是指定它的响应的数据类型的
   // "" | "arraybuffer" | "blob" | "document" | "json" | "text";
 }
@@ -34,6 +35,13 @@ export interface AxiosResponse {
   request: any // 这个是什么？
 }
 
+export interface AxiosError extends Error {
+  config: AxiosRequestConfig
+  code?: string
+  request?: any
+  response?: AxiosResponse
+  isAxiosError: boolean
+}
 // 继承Promise泛型的接口
 export interface AxiosPromise extends Promise<AxiosResponse> {
 }
