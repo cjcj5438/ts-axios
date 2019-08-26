@@ -1,6 +1,6 @@
-import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from './types'
-import { parseHeaders } from './helper/header'
-import { createError } from './helper/error'
+import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from '../types'
+import { parseHeaders } from '../helper/header'
+import { createError } from '../helper/error'
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
     // responseType 在 AxiosRequestConfig接口中有定义的

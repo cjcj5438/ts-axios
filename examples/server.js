@@ -58,7 +58,6 @@ router.get('/error/get', function(req, res) {
     res.end()
   }
 })
-
 router.get('/error/timeout', function(req, res) {
   setTimeout(() => {
     res.json({
@@ -66,6 +65,27 @@ router.get('/error/timeout', function(req, res) {
     })
   }, 3000)
 })
+router.get('/extend/get', function(req, res) {
+  res.json({
+    msg: `hello world`
+  })
+})
+router.get('/interceptor/get', function(req, res) {
+  res.json({
+    data: 0
+  })
+})
+router.get('/extend/user', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'ok',
+    result: {
+      name: 'jack',
+      age: 16
+    }
+  })
+})
+
 app.use(router)
 const port = process.env.PORT || 8080
 module.exports = app.listen(port, () => {
