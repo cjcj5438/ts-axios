@@ -85,6 +85,16 @@ router.get('/extend/user', function(req, res) {
     }
   })
 })
+router.post('/config/post', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'ok',
+    result: {
+      name: 'jack',
+      age: 16
+    }
+  })
+})
 
 app.use(router)
 const port = process.env.PORT || 8080

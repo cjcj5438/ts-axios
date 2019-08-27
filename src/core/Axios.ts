@@ -1,4 +1,11 @@
-import { AxiosPromise, AxiosRequestConfig, AxiosResponse, Method, RejectedFn, ResolvedFn } from '../types'
+import {
+  AxiosPromise,
+  AxiosRequestConfig,
+  AxiosResponse,
+  Method,
+  RejectedFn,
+  ResolvedFn
+} from '../types'
 import dispatchRequest from './dispatchRequest'
 import InterceptorManager from './interceptorManager'
 
@@ -9,14 +16,17 @@ interface Interceptors {
 }
 
 interface PromiseChain {
-  resolved: ResolvedFn | ((config: AxiosRequestConfig) => AxiosPromise),
+  resolved: ResolvedFn | ((config: AxiosRequestConfig) => AxiosPromise)
   rejected?: RejectedFn
 }
 
 export default class Axios {
   interceptors: Interceptors
+  // 添加一个默认配置
+  defaults: AxiosRequestConfig
 
-  constructor() {
+  constructor(initConfig: AxiosRequestConfig) {
+    this.defaults = initConfig
     this.interceptors = {
       request: new InterceptorManager<AxiosRequestConfig>(),
       response: new InterceptorManager<AxiosResponse>()
